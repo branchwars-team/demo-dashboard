@@ -17,3 +17,5 @@ a random avatar (masked via `branchwars.config.json`) and a "Last updated" times
 
 Note: checked by BranchWars pull request integration (push 1).
 Note: push 2 replaces push 1.
+
+BranchWars PR check, push 3 (Review Reporter).
