@@ -1,4 +1,4 @@
-import { orders, stats } from "./data";
+import { monthlyRevenue, orders, stats } from "./data";
 
 function exportCsv(): void {
   const rows = [["id", "customer", "status", "amount"], ...orders.map((o) => Object.values(o))];
@@ -10,6 +10,24 @@ function exportCsv(): void {
   document.querySelector("#export-status")!.textContent = "Exported orders.csv";
 }
 
+function renderBarChart(): string {
+  const max = Math.max(...monthlyRevenue.map((m) => m.value));
+  return `
+    <div class="bar-chart" role="img" aria-label="Monthly revenue bar chart">
+      ${monthlyRevenue
+        .map(
+          (m) => `
+            <div class="bar-col">
+              <span class="bar-value">${m.value}</span>
+              <div class="bar" style="height: ${Math.round((m.value / max) * 160)}px"></div>
+              <span class="bar-label">${m.month}</span>
+            </div>`,
+        )
+        .join("")}
+    </div>
+  `;
+}
+
 export function renderDashboard(): string {
   queueMicrotask(() => document.querySelector("#export")?.addEventListener("click", exportCsv));
   const updated = new Date().toUTCString();
@@ -17,10 +35,12 @@ export function renderDashboard(): string {
   return `
     <header class="page-header">
       <div>
-        <h1>Dashboard</h1>
+        <div class="title-row">
+          <h1>Dashboard</h1>
+          <button id="export-button" class="button" data-testid="export">Export</button>
+        </div>
         <p class="muted">Last updated ${updated}</p>
       </div>
-      <button id="export" class="button" data-testid="export">Export</button>
     </header>
     <p id="export-status" class="muted" role="status"></p>
 
@@ -28,6 +48,11 @@ export function renderDashboard(): string {
       ${stats
         .map((s) => `<div class="card stat"><span class="muted">${s.label}</span><strong>${s.value}</strong></div>`)
         .join("")}
+    </section>
+
+    <section class="card chart-card">
+      <h2>Monthly revenue <span class="muted">($k)</span></h2>
+      ${renderBarChart()}
     </section>
 
     <section class="card">
