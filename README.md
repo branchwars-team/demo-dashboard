@@ -16,3 +16,4 @@ a random avatar (masked via `branchwars.config.json`) and a "Last updated" times
 (handled by freezing the clock during capture).
 
 Note: checked by BranchWars pull request integration (push 1).
+Note: push 2 replaces push 1.
