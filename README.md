@@ -19,3 +19,5 @@ Note: checked by BranchWars pull request integration (push 1).
 Note: push 2 replaces push 1.
 
 BranchWars PR check, push 3 (Review Reporter).
+
+Server check
