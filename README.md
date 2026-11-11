@@ -14,3 +14,5 @@ npm run start   # http://localhost:3000
 The page deliberately includes two sources of noise that BranchWars must neutralize:
 a random avatar (masked via `branchwars.config.json`) and a "Last updated" timestamp
 (handled by freezing the clock during capture).
+
+Fork PR test
