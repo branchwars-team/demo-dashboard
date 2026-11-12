@@ -5,6 +5,8 @@ A small Vite app used to demo and test [BranchWars](../../CLAUDE.md).
 - `main`: Dashboard with three stat cards, an orders table and an Export button top-right.
 - `feature/new-dashboard`: adds a monthly revenue bar chart and moves Export next to the title.
 
+Fork PR test
+
 ```bash
 npm ci
 npm run build
